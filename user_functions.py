@@ -171,6 +171,16 @@ def changeunits(data):
         result.units = newUnit
         return result
 
+def getUnitFactor():
+    parent = QDialog()
+    title = "Change Units"
+    label = "Enter conversion factor:"
+    dialog = QInputDialog.getDouble(parent, title, label)
+    if dialog[1]:
+        return dialog[0]
+    else:
+        return None
+
 def statistics(data):
     n = len(data.data)
     sumOfData = np.sum(data.data)
@@ -191,16 +201,6 @@ def statistics(data):
     stats += "\nRange = " + rng
     print(stats)
     return()
-
-def getUnitFactor():
-    parent = QDialog()
-    title = "Change Units"
-    label = "Enter conversion factor:"
-    dialog = QInputDialog.getDouble(parent, title, label)
-    if dialog[1]:
-        return dialog[0]
-    else:
-        return None
 
 def chop(item, t_min, t_max):
     """
